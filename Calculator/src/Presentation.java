@@ -2,25 +2,27 @@ import java.util.Scanner;
 
 public class Presentation {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+        Scanner sca = new Scanner(System.in);
 
-        String operator = verify(sc);
+        String operator = verifyOperation(sca);
 
         System.out.println("");
         System.out.println("Primeiro número: ");
-        double num1 = verifyNumber(sc);
+        double num1 = verifyNumber(sca);
         System.out.println("Primeiro número: " + num1);
 
         System.out.println("");
         System.out.println("Segundo número: ");
-        double num2 = verifyNumber(sc);
+        double num2 = verifyNumber(sca);
         System.out.println("Segundo número: " + num2);
 
         System.out.println("");
         System.out.println("Resultado: " + calculate(operator, num1, num2));
+
+        sca.close();
     }
 
-    public static String verify(Scanner sc) {
+    public static String verifyOperation(Scanner sc) {
         System.out.println("Operação: ");
 
         String operation = sc.nextLine();
