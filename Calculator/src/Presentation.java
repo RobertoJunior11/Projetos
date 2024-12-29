@@ -22,10 +22,10 @@ public class Presentation {
         sca.close();
     }
 
-    public static String verifyOperation(Scanner sc) {
+    public static String verifyOperation(Scanner scannerOperation) {
         System.out.println("Operação: ");
 
-        String operation = sc.nextLine();
+        String operation = scannerOperation.nextLine();
 
         while (!(operation.equals("+") ||
                 operation.equals("-") ||
@@ -37,22 +37,22 @@ public class Presentation {
         )
         ) {
             System.out.println("Tente novamente: ");
-            operation = sc.nextLine();
+            operation = scannerOperation.nextLine();
         }
         System.out.println("Operação: " + operation);
 
         return operation;
     }
 
-    public static double verifyNumber(Scanner sc) {
+    public static double verifyNumber(Scanner scannerNumber) {
         double number;
 
-        while (!sc.hasNextDouble()) {
+        while (!scannerNumber.hasNextDouble()) {
             System.out.println("Tente novamente: ");
-            sc.next();
+            scannerNumber.next();
         }
 
-        number = sc.nextDouble();
+        number = scannerNumber.nextDouble();
 
         return number;
     }
