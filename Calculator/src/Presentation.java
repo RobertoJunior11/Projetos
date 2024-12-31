@@ -1,32 +1,48 @@
 import java.util.Scanner;
 
 public class Presentation {
+    public static final Scanner sca = new Scanner(System.in);
+
     public static void main(String[] args) {
-        Scanner sca = new Scanner(System.in);
+        String resp = "Sim";
 
-        String operator = verifyOperation(sca);
+        while (resp.equalsIgnoreCase("Sim") ||
+               resp.equalsIgnoreCase("s")) {
 
-        System.out.println();
-        System.out.println("Primeiro número: ");
-        double num1 = verifyNumber(sca);
-        System.out.println("Primeiro número escolhido: " + num1);
+            String operator = verifyOperation();
 
-        System.out.println();
-        System.out.println("Segundo número: ");
-        double num2 = verifyNumber(sca);
-        System.out.println("Segundo número escolhido: " + num2);
+            System.out.println();
+            System.out.println("Primeiro número: ");
+            double num1 = verifyNumber();
+            System.out.println("Primeiro número escolhido: " + num1);
 
-        System.out.println();
-        System.out.println("Resultado da operação: " + calculate(operator, num1, num2));
+            System.out.println();
+            System.out.println("Segundo número: ");
+            double num2 = verifyNumber();
+            System.out.println("Segundo número escolhido: " + num2);
 
+            System.out.println();
+            System.out.println("Resultado da operação: " + calculate(operator, num1, num2));
+
+            System.out.println();
+            System.out.println("Deseja continuar? ");
+
+            resp = sca.nextLine();
+
+            if (resp.equalsIgnoreCase("Não") ||
+                resp.equalsIgnoreCase("Nao") ||
+                resp.equalsIgnoreCase("N" )) {
+                break;
+            }
+        }
         sca.close();
     }
 
-    public static String verifyOperation(Scanner scannerOperation) {
+    public static String verifyOperation() {
         System.out.println();
         System.out.println("Escolha uma operação entre: +, -, x, /, ^, // e ///: ");
 
-        String operation = scannerOperation.nextLine();
+        String operation = sca.nextLine();
 
         while (!(operation.equals("+") ||
                 operation.equals("-") ||
@@ -38,24 +54,23 @@ public class Presentation {
         )
         ) {
             System.out.println("Tente novamente: ");
-            operation = scannerOperation.nextLine();
+            operation = sca.nextLine();
         }
         System.out.println("Operação escolhida: " + operation);
 
         return operation;
     }
 
-    public static double verifyNumber(Scanner scannerNumber) {
+    public static double verifyNumber() {
         double number;
 
         while (true) {
-            String enterNumber = scannerNumber.nextLine();
+            String enterNumber = sca.nextLine();
 
             try {
                 number = Double.parseDouble(enterNumber);
                 break;
-            }
-            catch (NumberFormatException e) {
+            } catch (NumberFormatException e) {
                 System.out.println("Tente novamente: ");
             }
         }
