@@ -29,6 +29,15 @@ public class Presentation {
 
             resp = sca.nextLine();
 
+            while (!(resp.equalsIgnoreCase("Sim") ||
+                    resp.equalsIgnoreCase("s") ||
+                    resp.equalsIgnoreCase("Não") ||
+                    resp.equalsIgnoreCase("Nao") ||
+                   resp.equalsIgnoreCase("N"))) {
+                System.out.println("Resposta inválida, tente novamente: ");
+                resp = sca.nextLine();
+            }
+
             if (resp.equalsIgnoreCase("Não") ||
                 resp.equalsIgnoreCase("Nao") ||
                 resp.equalsIgnoreCase("N" )) {
