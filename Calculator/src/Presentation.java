@@ -6,30 +6,31 @@ public class Presentation {
 
         String operator = verifyOperation(sca);
 
-        System.out.println("");
+        System.out.println();
         System.out.println("Primeiro número: ");
         double num1 = verifyNumber(sca);
-        System.out.println("Primeiro número: " + num1);
+        System.out.println("Primeiro número escolhido: " + num1);
 
-        System.out.println("");
+        System.out.println();
         System.out.println("Segundo número: ");
         double num2 = verifyNumber(sca);
-        System.out.println("Segundo número: " + num2);
+        System.out.println("Segundo número escolhido: " + num2);
 
-        System.out.println("");
-        System.out.println("Resultado: " + calculate(operator, num1, num2));
+        System.out.println();
+        System.out.println("Resultado da operação: " + calculate(operator, num1, num2));
 
         sca.close();
     }
 
     public static String verifyOperation(Scanner scannerOperation) {
-        System.out.println("Operação: ");
+        System.out.println();
+        System.out.println("Escolha uma operação entre: +, -, x, /, ^, // e ///: ");
 
         String operation = scannerOperation.nextLine();
 
         while (!(operation.equals("+") ||
                 operation.equals("-") ||
-                operation.equals("*") ||
+                operation.equals("x") ||
                 operation.equals("/") ||
                 operation.equals("^") ||
                 operation.equals("//") ||
@@ -39,7 +40,7 @@ public class Presentation {
             System.out.println("Tente novamente: ");
             operation = scannerOperation.nextLine();
         }
-        System.out.println("Operação: " + operation);
+        System.out.println("Operação escolhida: " + operation);
 
         return operation;
     }
@@ -47,13 +48,17 @@ public class Presentation {
     public static double verifyNumber(Scanner scannerNumber) {
         double number;
 
-        while (!scannerNumber.hasNextDouble()) {
-            System.out.println("Tente novamente: ");
-            scannerNumber.next();
+        while (true) {
+            String enterNumber = scannerNumber.nextLine();
+
+            try {
+                number = Double.parseDouble(enterNumber);
+                break;
+            }
+            catch (NumberFormatException e) {
+                System.out.println("Tente novamente: ");
+            }
         }
-
-        number = scannerNumber.nextDouble();
-
         return number;
     }
 
@@ -66,7 +71,7 @@ public class Presentation {
             return Calculations.sub(numX, numY);
         }
 
-        if (operate.equals("*")) {
+        if (operate.equals("x")) {
             return Calculations.multi(numX, numY);
         }
 

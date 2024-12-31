@@ -7,7 +7,7 @@ public class Calculations {
         return num1 - num2;
     }
     public static double multi(double num1, double num2) {
-        return num1 + num2;
+        return num1 * num2;
     }
     public static double div(double num1, double num2) {
         return num1 / num2;
